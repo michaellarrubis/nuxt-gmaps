@@ -39,13 +39,13 @@ export default {
       this.$parent.markers.push(this.marker);
       this.markerLoaded = true;
 
-      if (this.markerLoaded && this.opened)
-        child.infoWindow.open(this.$parent.map, this.marker);
-
       if (this.$children.length > 0) {
         child = this.$children[0];
         child.initInfoWindow();
       }
+
+      if (this.markerLoaded && this.opened)
+        child.infoWindow.open(this.$parent.map, this.marker);
 
       this.events.forEach((event) => {
         this.$parent.google.maps.event.addListener(this.marker, event, (e) => {
